@@ -1,7 +1,7 @@
 package com.example.contentcalendar.controller;
 
 import com.example.contentcalendar.model.Content;
-import com.example.contentcalendar.repository.ContentCollectionRepository;
+import com.example.contentcalendar.repository.ContentRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +14,9 @@ import java.util.List;
 @CrossOrigin
 public class ContentController {
 
-    private ContentCollectionRepository repository;
+    private ContentRepository repository;
 
-    public ContentController(ContentCollectionRepository repository) {
+    public ContentController(ContentRepository repository) {
         this.repository = repository;
     }
 
@@ -53,6 +53,6 @@ public class ContentController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteContent(@PathVariable Integer id) {
-        repository.delete(id);
+        repository.deleteById(id);
     }
 }
