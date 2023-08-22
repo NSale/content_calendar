@@ -32,6 +32,14 @@ public class ContentCollectionRepository {
         contentList.add(content);
     }
 
+    public boolean existsById(Integer id) {
+        return contentList.stream().filter(c -> c.id().equals(id)).count() == 1;
+    }
+
+    public void delete(Integer id) {
+        contentList.removeIf(c -> c.id().equals(id));
+    }
+
     @PostConstruct
     private void init() {
         Content content1 = new Content(1,
@@ -50,26 +58,8 @@ public class ContentCollectionRepository {
                 LocalDateTime.now(),
                 null,
                 "");
-        Content content3 = new Content(3,
-                "My Third Blog Post",
-                "My third blog post",
-                Status.COMPLETED,
-                Type.COURSE,
-                LocalDateTime.now(),
-                null,
-                "");
-        Content content4 = new Content(4,
-                "My Forth Blog Post",
-                "My forth blog post",
-                Status.PUBLISHED,
-                Type.VIDEO,
-                LocalDateTime.now(),
-                null,
-                "");
 
         contentList.add(content1);
         contentList.add(content2);
-        contentList.add(content3);
-        contentList.add(content4);
     }
 }
