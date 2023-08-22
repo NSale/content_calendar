@@ -40,26 +40,4 @@ public class ContentCollectionRepository {
         contentList.removeIf(c -> c.id().equals(id));
     }
 
-    @PostConstruct
-    private void init() {
-        Content content1 = new Content(1,
-                "My First Blog Post",
-                "My first blog post",
-                Status.IDEA,
-                Type.ARTICLE,
-                LocalDateTime.now(),
-                null,
-                "");
-        Content content2 = new Content(2,
-                "My Secong Blog Post",
-                "My second blog post",
-                Status.IN_PROGRESS,
-                Type.CONFERENCE_TALK,
-                LocalDateTime.now(),
-                null,
-                "");
-
-        contentList.add(content1);
-        contentList.add(content2);
-    }
 }

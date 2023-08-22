@@ -23,7 +23,7 @@ public class ContentJdbcTemplateRepository {
     private static Content mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Content(rs.getInt("id"),
                 rs.getString("title"),
-                rs.getString("desc"),
+                rs.getString("description"),
                 Status.valueOf(rs.getString("status")),
                 Type.valueOf(rs.getString("content_type")),
                 rs.getObject("date_created", LocalDateTime.class),
